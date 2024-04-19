@@ -23,13 +23,13 @@ class MovieDetailsViewModel @Inject constructor(
     private val _movieDetails = mutableStateOf(MovieDetailsStateHolder())
     val movieDetails: State<MovieDetailsStateHolder> get() = _movieDetails
 
-    val API_KEY=""
+    val API_KEY = "02f440e85f7722d198a3559061c88d6f"
 
     init {
         savedStateHandle.getLiveData<String>("id").observeForever {
             it?.let {
                 Log.d("TAGGG", "${it}")
-                getMovieDetails(it,API_KEY)
+                getMovieDetails(it, API_KEY)
             }
         }
 
@@ -42,9 +42,11 @@ class MovieDetailsViewModel @Inject constructor(
                 is ApiResponseEvent.Loading -> {
                     _movieDetails.value = MovieDetailsStateHolder(isLoading = true)
                 }
+
                 is ApiResponseEvent.Error -> {
                     _movieDetails.value = MovieDetailsStateHolder(error = it.message.toString())
                 }
+
                 is ApiResponseEvent.Success -> {
                     _movieDetails.value = MovieDetailsStateHolder(data = it.data)
                 }
