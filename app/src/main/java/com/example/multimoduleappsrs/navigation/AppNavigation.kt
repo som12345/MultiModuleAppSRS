@@ -12,11 +12,11 @@ fun AppNavGraph(
 ) {
 
     NavHost(navController = navController, startDestination = MovieFeature.nestedListRoute){
-        navigationProvider.movieApi.registerGraph(
+        navigationProvider.movieListScreenController.registerGraph(
             navController,this
         )
 
-        navigationProvider.movieDetailsApi.registerGraph(
+        navigationProvider.movieDetailsScreenController.registerGraph(
             navController,this
         )
     }

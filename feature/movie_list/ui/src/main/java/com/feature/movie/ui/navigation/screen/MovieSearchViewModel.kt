@@ -20,13 +20,8 @@ class MovieSearchViewModel @Inject constructor(private val getMovieListUseCase: 
     val movieList: State<MovieSearchStateHolder> get() = _movieList
 
     private val _query: MutableStateFlow<String> = MutableStateFlow("Android")
-    val query: StateFlow<String> get() = _query
 
-    fun setQuery(s: String) {
-        _query.value = s
-    }
-
-    val API_KEY = "02f440e85f7722d198a3559061c88d6f"
+    private val API_KEY = "02f440e85f7722d198a3559061c88d6f"
 
     init {
         viewModelScope.launch {
@@ -37,7 +32,7 @@ class MovieSearchViewModel @Inject constructor(private val getMovieListUseCase: 
     }
 
 
-    fun getMovieList(apiKey: String, q: String) = viewModelScope.launch {
+    private fun getMovieList(apiKey: String, q: String) = viewModelScope.launch {
 
         getMovieListUseCase(apiKey, q).onEach {
             when (it) {

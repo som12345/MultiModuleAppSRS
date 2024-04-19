@@ -5,8 +5,11 @@ import androidx.navigation.NavHostController
 import com.core.feature_api.FeatureNavigationController
 
 interface MovieNavigationController : FeatureNavigationController {
-
-
+    override fun registerGraph(navController: NavHostController, navGraphBuilder: NavGraphBuilder) {
+        InternalMovieFeatureNavigationController.registerGraph(
+            navController, navGraphBuilder
+        )
+    }
 }
 
 
