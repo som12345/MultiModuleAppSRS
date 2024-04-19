@@ -12,5 +12,14 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "MultiModuleAppSRS"
+rootProject.name = "Movie App Youtube"
 include ':app'
+include ':feature:movie_list:ui'
+include ':feature:movie_details:data'
+include ':feature:movie_details:domain'
+include ':feature:movie_details:ui'
+include ':common'
+include ':navigation'
+include ':network'
+include ':feature:movie_list:data'
+include ':feature:movie_list:domain'
